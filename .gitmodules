@@ -1,0 +1,3 @@
+[submodule "lib/php-srcds-rcon"]
+	path = lib/php-srcds-rcon
+	url = git@github.com:nick-oconnor/php-srcds-rcon.git

@@ -1,0 +1,11 @@
+{
+    "require": {
+        "datadog/php-datadogstatsd": "^1.5",
+        "vlucas/phpdotenv": "^5.3"
+    },
+    "autoload": {
+        "classmap": [
+            "lib/php-srcds-rcon/srcds_rcon.php"
+        ]
+    }
+}
