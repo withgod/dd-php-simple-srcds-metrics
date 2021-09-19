@@ -18,10 +18,13 @@ $lines = preg_split('/[\r\n]+/', $ret);
 # cpu, in_kb, out_kb, uptime, map_changes, fps, players, connects
 $stats = preg_split('/ +/', $lines[1]);
 
-# var_dump($stats);
+// var_dump($stats);
 
 $statsd->gauge('srcds.cpu', (double)$stats[0]);
 $statsd->gauge('srcds.uptime', (int)$stats[3]);
 $statsd->gauge('srcds.fps', (double)$stats[5]);
 $statsd->gauge('srcds.users', (int)$stats[6]);
+
+echo join(", ", $stats);
+echo "\n";
 
