@@ -13,10 +13,16 @@ $statsd = new DogStatsd(
 
 $rcon = new srcds_rcon($_ENV['RCON_HOST'], $_ENV['RCON_PORT'], $_ENV['RCON_PASSWORD']);
 
-$ret = $rcon->command('stats');
-$lines = preg_split('/[\r\n]+/', $ret);
-# cpu, in_kb, out_kb, uptime, map_changes, fps, players, connects
-$stats = preg_split('/ +/', $lines[1]);
+$stats = [];
+if ($rcon->connect_error() == 0) {
+    $ret = $rcon->command('stats');
+    $lines = preg_split('/[\r\n]+/', $ret);
+    # cpu, in_kb, out_kb, uptime, map_changes, fps, players, connects
+    $stats = preg_split('/ +/', $lines[1]);
+} else {
+    $stats = [0, 0, 0, 0, 0, 0, 0, 0];
+}
+
 
 // var_dump($stats);
 
